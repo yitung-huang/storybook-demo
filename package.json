@@ -17,9 +17,13 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "classnames": "^2.3.1",
+    "css-loader": "~2.1.1",
+    "node-sass": "^4.13.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^0.23.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
