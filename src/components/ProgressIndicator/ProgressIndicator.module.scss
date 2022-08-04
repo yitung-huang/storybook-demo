@@ -1,0 +1,21 @@
+.container {
+  --border-radius: 30px;
+
+  position: relative;
+  height: var(--border-radius);
+  border-radius: var(--border-radius);
+  background: #eee;
+
+  .progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+
+  .animate {
+    transition: width 0.5s ease-in-out, background 0.5s ease-in-out;
+  }
+}
