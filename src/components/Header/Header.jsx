@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Button } from "../Button/Button";
+import { Greeting } from "./Greeting";
+
 import "./Header.scss";
 
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
@@ -33,7 +35,10 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
       </div>
       <div>
         {user ? (
-          <Button size="small" onClick={onLogout} label="Log out" />
+          <>
+            <Greeting user={user} />
+            <Button size="small" onClick={onLogout} label="Log out" />
+          </>
         ) : (
           <>
             <Button size="small" onClick={onLogin} label="Log in" />
@@ -51,7 +56,9 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
 );
 
 Header.propTypes = {
-  user: PropTypes.shape({}),
+  user: PropTypes.shape({
+    name: PropTypes.string
+  }),
   onLogin: PropTypes.func.isRequired,
   onLogout: PropTypes.func.isRequired,
   onCreateAccount: PropTypes.func.isRequired
