@@ -1,0 +1,116 @@
+# ============================== #
+#         Component Docs         #
+# ============================== #
+/**
+* Colour string that makes sense in CSS. E.g. 'red', #DD88FA, rgb(132, 42, 0) ... etc
+*/
+"coloursAnimation.colour": PropTypes.string,
+
+
+# ============================== #
+#            Template            #
+# ============================== #
+const ProgressIndicatorStory = ({ story, ...args }) => {
+	const { maxWidth = "unset" } = story;
+	return (
+		<div style={{ maxWidth }}>
+			<ProgressIndicator {...args} />
+		</div>
+	);
+};
+
+---------- template argument ----------
+story: {
+    maxWidth: "300px"
+},
+
+
+---------- Control ----------
+argTypes: {
+    defaultColour: { control: "color" }
+}
+
+
+# ============================== #
+#          Documentation         #
+# ============================== #
+---------- Component Docs ----------
+	parameters: {
+		docs: {
+			description: {
+				component: `I'm overriding the component descriptions from the story book file. _Here are some markdown_!`
+			}
+		}
+	},
+
+---------- Story docs ----------
+Default.parameters = {
+	docs: {
+		description: {
+			story: "Hello, I am the most basic model you can find in this factory!"
+		}
+	}
+};
+Animated.parameters = {
+	docs: {
+		description: {
+			story:
+				"Hello, I am a slightly more sophisticated model which has a simple, pre-programmed animation!"
+		}
+	}
+};
+CustomisedAnimation.parameters = {
+	docs: {
+		description: {
+			story:
+				"Hello, I am the most fancy one yet - I have custom animation duration, colours, as well as timing!"
+		}
+	}
+};
+
+# ============================== #
+#          Subcomponent          #
+# ============================== #
+
+---------- Header.jsx ----------
+
+import { Greeting } from "./Greeting";
+
+<Greeting user={user} />
+
+---------- Header.stories.jsx ----------
+
+import { Greeting } from "./Greeting";
+
+export default {
+	title: "Example/Header",
+	component: Header,
+	subcomponents: { Greeting },
+	argTypes: {
+		onLogout: { action: true }
+	}
+};
+
+LoggedIn.args = {
+	user: {
+        name: "Hummus"
+    }
+};
+
+
+# ============================== #
+#      Testing Subcomponent      #
+# ============================== #
+
+import { expect } from "@storybook/jest";
+import { userEvent, waitFor, within } from "@storybook/testing-library";
+
+LoggedIn.play = async ({ args, canvasElement }) => {
+	const canvas = within(canvasElement);
+
+	await userEvent.click(canvas.getByRole("button"));
+
+	await waitFor(() => expect(args.onLogout).toHaveBeenCalled());
+};
+
+
