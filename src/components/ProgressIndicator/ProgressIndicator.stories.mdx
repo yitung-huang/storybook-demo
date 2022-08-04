@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+import { ProgressIndicator } from "./ProgressIndicator";
+
+<Meta title="Custom Examples/ProgressIndicator (MDX version)" />
+
+# Progress Indicator - A Fancier Version
+
+This is a progress indicator which displays percentage of progress. I typed all this in the `MDX` file using markup language.
+
+export const Template = (args) => <ProgressIndicator {...args} />;
+
+<Canvas>
+  <Story name="Default" args={{ percentage: 30 }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Animated"
+    args={{
+      animate: true,
+      percentage: 40
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Customised Animation"
+    args={{
+      animate: true,
+      animationDuration: 2000,
+      coloursAnimation: [
+        { colour: "red", threshold: 0.33 },
+        { colour: "orange", threshold: 0.67 },
+        { colour: "#42ba00", threshold: 0.9 }
+      ],
+      defaultColour: "black",
+      percentage: 75
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
