@@ -19,7 +19,8 @@ module.exports = {
 		"storybook-addon-pseudo-states"
 	],
 	features: {
-		postcss: false
+		postcss: false,
+		interactionsDebugger: true
 	},
 	framework: "@storybook/react",
 	core: {
